@@ -13,7 +13,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
   String _operation = '';
   String _historical = '';
 
-  void calculate(String numText) {
+  void calculate() {
     Parser p = Parser();
     Expression exp = p.parse(_operation);
 
@@ -89,7 +89,9 @@ class _CalculatorAppState extends State<CalculatorApp> {
                   text: 'C',
                   backGroundColor: Colors.blueAccent,
                   color: Colors.white,
-                  action: createNum,
+                  action: (item) {
+                    clear();
+                  },
                 ),
                 CalButtonPage(
                   text: '%',
@@ -140,7 +142,9 @@ class _CalculatorAppState extends State<CalculatorApp> {
                 CalButtonPage(text: '0', action: createNum),
                 CalButtonPage(text: '00', action: createNum),
                 CalButtonPage(
-                    text: '=', color: Colors.blueAccent, action: calculate),
+                    text: '=',
+                    color: Colors.blueAccent,
+                    action: (item) => calculate()),
               ],
             ),
           ],
